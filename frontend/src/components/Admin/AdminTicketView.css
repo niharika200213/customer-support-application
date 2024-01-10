@@ -1,0 +1,126 @@
+/* CreateTicketForm.css */
+
+/* Styles for the main container */
+body {
+    background-color: #041a44; 
+    font-family: Arial, sans-serif; 
+    color: #f08888; 
+    text-align: center;
+  }
+
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  ul li{
+    padding: 3%; 
+    margin: auto;
+    width: 30%;
+    background-color:#374b4f;
+    margin-top: 2%;
+    border-radius: 8px;
+  }  
+
+  ul li:hover{
+    list-style: none;
+    padding: 3%;    
+    margin: auto;
+    width: 30%;
+    background-color:#374b4f;
+    margin-top: 2%;
+    scale: 103%;
+  }  
+
+  .link-style{
+    text-decoration:none;
+    color:#42d7f5;
+  }
+
+.create-ticket-container {
+    margin: auto;
+    margin-top: 3%;
+    width: 55%;
+    padding: 7%;
+    border-radius: 8px;
+    background-color:#374b4f;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styles */
+   h1 {
+    color: #42d7f5;
+    text-align: center;
+  }
+  
+  /* Label styles */
+label {
+    color: #f08888;
+    font-weight: bold;
+  }
+  
+  /* Input styles */
+ textarea {
+    width: 90%;
+    padding: 2%;
+    margin: 2% auto 2% auto;
+    border: 2px solid #a6a1a1;
+    border-radius: 5px;
+    transition: border-color 0.3s ease-in-out;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  textarea:focus, .update-ticket textarea:focus {
+    border-color: #000000;
+    outline: none;
+  }
+  
+  /* Button styles */
+  button {
+    padding: 2% 3%;
+    background-color:#008E97;
+    color: #fff;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background-color:#008088;
+    scale: 101%;
+    transition: 0.2s;
+  }
+
+  .view-ticket{
+    background-color: #374b4f;
+    margin: 2% auto;
+    width: 30%;
+    padding: 2%;
+    border-radius: 8px;
+  }
+
+  .view-ticket p{
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .view-ticket button{
+    margin: 2%;
+  }
+
+  .update-ticket textarea{
+    width: 50%;
+    padding: 2%;
+    margin: 1% auto;
+    border: 2px solid #a6a1a1;
+    border-radius: 5px;
+    transition: border-color 0.3s ease-in-out;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .update-ticket h2{
+    margin: 4% auto 0 auto;
+    color: #f08888;
+  }
+  
