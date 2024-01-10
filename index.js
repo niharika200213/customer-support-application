@@ -8,7 +8,7 @@ const { MONGO_URL, PORT } = process.env;
 // Connection to MongoDB
 const mongoose = require("mongoose");
 mongoose
-  .connect(MONGO_URL)
+  .connect(MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true} )
   .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.error(err));
 
@@ -24,7 +24,7 @@ app.use(
   }),
 );
 
-app.use("/api/ticket", ticketRoute);
+app.use("/ticket", ticketRoute);
 
 app.get("/", (req, res) => {
   res.status(200).json({
