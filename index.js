@@ -1,5 +1,6 @@
 require("dotenv").config();
 const ticketRoute=require("./routes/ticket");
+const messageRoute=require("./routes/messages");
 const express=require('express');
 const cors=require("cors");
 
@@ -25,6 +26,7 @@ app.use(
 );
 
 app.use("/ticket", ticketRoute);
+app.use("/messages", messageRoute);
 
 app.get("/", (req, res) => {
   res.status(200).json({
