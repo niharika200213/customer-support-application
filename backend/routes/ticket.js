@@ -70,9 +70,9 @@ router.get("/:id", async (req, res, next) => {
 router.patch("/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
-        const status = req.body; // Data to update the ticket
+        const {status, description} = req.body; // Data to update the ticket
 
-        const updatedTicket = await Ticket.findByIdAndUpdate(id, status, {
+        const updatedTicket = await Ticket.findByIdAndUpdate(id, {status,description}, {
             new: true, runValidators: true,
         });
         if (!updatedTicket) {
