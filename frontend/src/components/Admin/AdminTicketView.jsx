@@ -72,7 +72,6 @@ const AdminTicketView = () => {
       <p>Status: {ticket.status}</p>
       <p>Created By: {ticket.createdBy}</p>
       <p>Date Created: {new Date(ticket.dateCreated).toLocaleString()}</p>
-
       {/* Update Status */}
       <label>
         Update Status:
@@ -86,7 +85,9 @@ const AdminTicketView = () => {
         </select>
         <button onClick={handleStatusChange}>Update Status</button>
       </label>
+      <button onClick={()=>navigate(`/admin/chat/${id}`)}>Solve Issue</button>
       <button onClick={()=>navigate('/admin/dashboard')}>Dashboard</button>
+
       </div>
     </div>
   );

@@ -43,16 +43,20 @@ form {
     padding: 1% 2%;
     color: #fff;
     overflow-wrap: break-word;
+    width: 40%;
+    margin: 1%;
 }
 
 .staff {
     background-color: #008088;
     text-align: right;
+    align-self: flex-end;
 }
 
 .user {
     text-align: left;
     background-color: #6a6969;
+    align-self: flex-start;
 }
 
 .container {
@@ -64,9 +68,7 @@ form {
     overflow-x: hidden;
 }
 
-.message-container .staff {
-    width: 100%;
-    flex: 1;
+.message-container{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
 }

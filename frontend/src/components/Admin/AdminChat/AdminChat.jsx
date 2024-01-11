@@ -50,18 +50,19 @@ const AdminChat = (props) => {
                 {messages.length > 0 ?
                     <div>
                         {messages.map((message, index) => {
+                            const dt = new Date(message.sentAt);
                             return message.sentBy === 'Staff' ?
                                 (<div key={index} className='message-container'>
                                     <div className='staff'>
                                         <p>{message.content}</p>
-                                        <p>{message.sentAt}</p>
+                                        <p style={{fontSize:'smaller'}}>{dt.toLocaleString()}</p>
                                     </div>
                                 </div>)
                                 :
                                 (<div key={index} className='message-container'>
                                     <div className='user'>
                                         <p>{message.content}</p>
-                                        <p>{message.sentAt}</p>
+                                        <p style={{fontSize:'smaller'}}>{dt.toLocaleString()}</p>
                                     </div>
                                 </div>)
                         })}

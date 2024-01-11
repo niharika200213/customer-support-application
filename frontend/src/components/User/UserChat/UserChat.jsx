@@ -1,47 +1,81 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useParams } from "react-router-dom";
+import './UserChat.css';
+const socket = io('http://localhost:5000'); // Replace with your server URL
 
 const UserChat = (props) => {
-    const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    let socket;
+    const [inputMessage, setInputMessage] = useState('');
+    const { id } = useParams();
+
     useEffect(() => {
-        // Establish a WebSocket connection with the server
-        socket = io('http://localhost:5000'); // Replace PORT with the actual port number
+        // Join the chat room as a staff
+        socket.emit('joinRoom', { ticket: id, userType: 'User' });
 
-        // Event listener for receiving messages
-        socket.on('message', (message) => {
-            setMessages((prevMessages) => [...prevMessages, message]);
-        });
+        // Listen for incoming messages
+        socket.on('message', handleMessage);
 
-        // Clean up the WebSocket connection
+        // Listen for previous chat messages
+        socket.on('previousChat', handlePreviousChat);
+
         return () => {
-            socket.disconnect();
+            // Clean up the event listeners when the component unmounts
+            socket.off('message', handleMessage);
+            socket.off('previousChat', handlePreviousChat);
         };
-    }, []);
+    }, [id, messages]);
 
-    const sendMessage = () => {
-        // Emit the message to the server
-        socket.emit('chatMessage', { content: message });
+    const handleMessage = (message) => {
+        setMessages((prevMessages) => [...prevMessages, message]);
+    };
 
-        // Clear the input field after sending the message
-        setMessage('');
+    const handlePreviousChat = (previousMessages) => {
+        setMessages(previousMessages);
+    };
+
+    const handleSendMessage = (e) => {
+        e.preventDefault();
+        if (inputMessage.trim() !== '') {
+            // Send the message to the server
+            socket.emit('chatMessage', { content: inputMessage });
+            setInputMessage('');
+        }
     };
 
     return (
         <div>
-            <ul>
-                {messages.map((message, index) => (
-                    <li key={index}>{message}</li>
-                ))}
-            </ul>
-            <input
-                type="text"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-            />
-            <button onClick={sendMessage}>Send</button>
+            <h1 style={{ margin: '2% auto' }}>Chat Online</h1>
+            <div className='container'>
+                {messages.length > 0 ?
+                    <div>
+                        {messages.map((message, index) => {
+                            const dt = new Date(message.sentAt);
+                            return message.sentBy === 'User' ?
+                                (<div key={index} className='message-container'>
+                                    <div className='user'>
+                                        <p>{message.content}</p>
+                                        <p style={{fontSize:'smaller'}}>{dt.toLocaleString()}</p>
+                                    </div>
+                                </div>)
+                                :
+                                (<div key={index} className='message-container'>
+                                    <div className='staff'>
+                                        <p>{message.content}</p>
+                                        <p style={{fontSize:'smaller'}}>{dt.toLocaleString()}</p>
+                                    </div>
+                                </div>)
+                        })}
+                    </div> : <></>}
+            </div>
+            <form onSubmit={handleSendMessage}>
+                <input
+                    type="text"
+                    value={inputMessage}
+                    onChange={(e) => setInputMessage(e.target.value)}
+                />
+                <button type="submit">Send</button>
+            </form>
         </div>
     );
 };
