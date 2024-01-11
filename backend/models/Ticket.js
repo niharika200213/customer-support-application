@@ -18,6 +18,11 @@ const ticketSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  important: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
   messages: [
     {
       sentBy: {

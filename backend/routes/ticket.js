@@ -5,10 +5,15 @@ const Ticket = require("../models/Ticket");
 // Create a new ticket
 router.post("/create", async (req, res, next) => {
     try {
+        const regex = /loan|card|fraud|fees/i;
         const { description, createdBy } = req.body;
+        let important=false;
+        if(regex.test(description))
+            important=true;
         const newTicket = await Ticket.create({
             description:description,
             createdBy:createdBy,
+            important: important,
             messages:[{content:description}]
         });
 
@@ -24,7 +29,7 @@ router.post("/create", async (req, res, next) => {
 router.get("/user/:createdBy", async (req, res, next) => {
     try {
         const createdBy = req.params.createdBy;
-        const userTickets = await Ticket.find({ createdBy: createdBy });
+        const userTickets = await Ticket.find({ createdBy: createdBy }).sort({important: -1});
         res.status(200).json(userTickets);
     } catch (err) {
         if (!err.statusCode)
@@ -41,7 +46,7 @@ router.get("/search", async (req,res,next) => {
             [{description:{$regex: `${exp}`, $options: 'i'}},
             {createdBy:{$regex: `${exp}`, $options: 'i'}},
             {messages:{$elemMatch:{content:{$regex: `${exp}`, $options: 'i'}}}},]
-            });
+            }).sort({important: -1});
         return res.status(200).send(tickets);
     }catch(err){
         if(!err.statusCode)
@@ -111,7 +116,7 @@ router.get("/", async (req, res, next) => {
         // Check if a status filter is provided
         const filter = status ? { status:{$regex:status, $options:'i'}} : {};
 
-        const tickets = await Ticket.find(filter);
+        const tickets = await Ticket.find(filter).sort({important: -1});
         res.status(200).json(tickets);
     } catch (err) {
         if (!err.statusCode)

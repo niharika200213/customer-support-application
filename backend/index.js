@@ -15,14 +15,19 @@ const {
 } = require('./utils/users');
 
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+  cors: {
+    origin: "*",
+    credentials: true
+  }
+});
 
 // run when client connects
 io.on('connection', (socket) => {
-  socket.on('joinRoom', ({ username, ticket, userType }) => {
-    const user = userJoin(socket.id, username, ticket, userType);
+  socket.on('joinRoom', ({ ticket, userType }) => {
+    const user = userJoin(socket.id, ticket, userType);
     socket.join(user.room);
-    Ticket.findById(user.room).then((ticket)=>socket.emit('previousChat', ticket.messages))
+    Ticket.findById(user.room).then((ticket)=>ticket && socket.emit('previousChat', ticket.messages))
     .catch((err)=>console.log(err))
   });
 
@@ -31,10 +36,8 @@ io.on('connection', (socket) => {
     const user = getCurrentUser(socket.id);
     const id = user.room, sentBy=user.userType
     Ticket.findByIdAndUpdate(id, {$push:{messages:{content, sentBy}}}, {new: true, runValidators: true,})
-    .then((newTicket)=>{console.log(newTicket)})
+    .then((newTicket)=>{io.to(user.room).emit('message', newTicket.messages)})
     .catch((err)=>console.log(err))
-    const date=new Date();
-    io.to(user.room).emit('message', {content, date});
   });
 
   // runs when clients disconnects
