@@ -73,3 +73,17 @@ form {
     display: flex;
     flex-direction: column;
 }
+
+.canned{
+    font-size: smaller;
+    position: fixed;
+    bottom: 17%;
+    width: 100%;
+}
+
+.canned span{
+    padding: 0.5%;
+    margin: 0.5%;
+    background-color: rgb(139, 40, 4);
+    cursor: pointer;
+}

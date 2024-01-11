@@ -68,6 +68,11 @@ const AdminChat = (props) => {
                         })}
                     </div> : <></>}
             </div>
+            <div className='canned'>
+                <span onClick={(e)=>setInputMessage(e.target.textContent)}>Hi there, please provide more details</span>
+                <span onClick={(e)=>setInputMessage(e.target.textContent)}>We’re fixing the issue right now</span>
+                <span onClick={(e)=>setInputMessage(e.target.textContent)}>Please provide your valuable feedback</span>
+            </div>
             <form onSubmit={handleSendMessage}>
                 <input
                     type="text"
