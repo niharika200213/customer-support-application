@@ -65,6 +65,9 @@ const AdminTicketView = () => {
       />
       <h2 style={{ color: '#42d7f5', marginTop: '4%' }}>Ticket</h2>
       <div className="view-ticket">
+      <div style={{textAlign:'left', margin:'1%'}}>
+                  {ticket.important? <span>important</span>:<></>}
+      </div>
       <p>Description: {ticket.description}</p>
       <p>Status: {ticket.status}</p>
       <p>Created By: {ticket.createdBy}</p>

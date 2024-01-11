@@ -99,6 +99,9 @@ const UserTicketView = (props) => {
       ) : (
         <>
           <div className="view-ticket">
+            <div style={{textAlign:'left', margin:'1%'}}>
+                  {ticket.important? <span>important</span>:<></>}
+                  </div>
             <p>Description: {ticket.description}</p>
             <p>Status: {ticket.status}</p>
             <p>Created By: {ticket.createdBy}</p>

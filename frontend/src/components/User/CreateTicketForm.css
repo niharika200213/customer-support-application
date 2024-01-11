@@ -123,4 +123,10 @@ label {
     margin: 4% auto 0 auto;
     color: #f08888;
   }
-  
+  span{
+    background-color: #029402;
+    padding: 1%;
+    font-size: smaller;
+    color: white;
+    border-radius: 8px;
+  }

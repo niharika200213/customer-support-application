@@ -9,7 +9,8 @@ const UserDashboard = (props) => {
   const navigate = useNavigate();
 
   // Hardcoded createdBy value
-  const createdBy =  '124'//props.userId;
+  //const createdBy =  'PMHlz'
+  const createdBy = props.userId;
 
   useEffect(() => {
     // Fetch tickets created by the specified user
@@ -48,7 +49,10 @@ const UserDashboard = (props) => {
           <tbody>
             {userTickets.map((ticket) => (
               <tr key={ticket._id}>
-                <td>{ticket.description}</td>
+                <td><div style={{textAlign:'left', margin:'1%'}}>
+                  {ticket.important? <span>important</span>:<></>}
+                  </div>
+                  {ticket.description}</td>
                 <td>{ticket.status}</td>
                 <td>
                   <button onClick={() => handleViewTicket(ticket._id)}>

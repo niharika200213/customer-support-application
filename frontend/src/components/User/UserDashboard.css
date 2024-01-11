@@ -46,3 +46,10 @@ th{
     scale: 101%;
     transition: 0.2s;
   }
+  span{
+    background-color: #029402;
+    padding: 1%;
+    font-size: smaller;
+    color: white;
+    border-radius: 8px;
+  }

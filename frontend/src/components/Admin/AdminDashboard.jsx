@@ -82,7 +82,11 @@ const AdminDashboard = () => {
         <tbody>
           {tickets.map((ticket) => (
             <tr key={ticket._id}>
-              <td>{ticket.description}</td>
+              <td>
+                <div style={{textAlign:'left', margin:'1%'}}>
+                  {ticket.important? <span>important</span>:<></>}
+                  </div>
+                  {ticket.description}</td>
               <td>{ticket.status}</td>
               <td>{ticket.createdBy}</td>
               <td>{new Date(ticket.dateCreated).toLocaleString()}</td>

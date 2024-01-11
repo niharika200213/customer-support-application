@@ -43,3 +43,10 @@ th, td{
     transition: 2s;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   }
+  span{
+    background-color: #029402;
+    padding: 1%;
+    font-size: smaller;
+    color: white;
+    border-radius: 8px;
+  }

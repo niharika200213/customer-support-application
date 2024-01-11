@@ -9,7 +9,7 @@ const FirstPage = (props) => {
   const unique_id = nanoid(5);
   return (
     <div>
-      <h1 style={{marginTop:'4%'}}>Branch International</h1>
+      <h1 style={{marginTop:'4%'}}>Company Customer Support</h1>
       <ul>
         <li>
           <Link className="link-style" to="/admin/dashboard"><h2>Admin Dashboard</h2></Link>
