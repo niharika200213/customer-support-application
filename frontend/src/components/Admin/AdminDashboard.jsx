@@ -60,7 +60,7 @@ const AdminDashboard = () => {
     <div>
       <h2>Admin Dashboard</h2>
       <label htmlFor="search">Search:</label>
-      <input style={{margin:'1%'}} id="search" value={searchExp} onChange={(e) => setSearchExp(e.target.value)}></input>
+      <input style={{margin:'1%', width:'30%', padding:'0.5%'}} id="search" value={searchExp} onChange={(e) => setSearchExp(e.target.value)}></input>
       <label htmlFor="status">Filter by Status:</label>
       <select style={{margin:'1%'}} id="status" onChange={handleStatusChange} value={selectedStatus}>
         <option value="All">All</option>
@@ -86,7 +86,7 @@ const AdminDashboard = () => {
                 <div style={{textAlign:'left', margin:'1%'}}>
                   {ticket.important? <span>important</span>:<></>}
                   </div>
-                  {ticket.description}</td>
+                  {ticket.description.substring(0, 100)}</td>
               <td>{ticket.status}</td>
               <td>{ticket.createdBy}</td>
               <td>{new Date(ticket.dateCreated).toLocaleString()}</td>

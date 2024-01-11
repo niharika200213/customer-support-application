@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import './UserChat.css';
 const socket = io('http://localhost:5000'); // Replace with your server URL
 
-const UserChat = (props) => {
+const UserChat = () => {
     const [messages, setMessages] = useState([]);
     const [inputMessage, setInputMessage] = useState('');
     const { id } = useParams();
@@ -53,14 +53,14 @@ const UserChat = (props) => {
                             const dt = new Date(message.sentAt);
                             return message.sentBy === 'User' ?
                                 (<div key={index} className='message-container'>
-                                    <div className='user'>
+                                    <div className='user-chat'>
                                         <p>{message.content}</p>
                                         <p style={{fontSize:'smaller'}}>{dt.toLocaleString()}</p>
                                     </div>
                                 </div>)
                                 :
                                 (<div key={index} className='message-container'>
-                                    <div className='staff'>
+                                    <div className='staff-chat'>
                                         <p>{message.content}</p>
                                         <p style={{fontSize:'smaller'}}>{dt.toLocaleString()}</p>
                                     </div>

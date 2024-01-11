@@ -52,7 +52,7 @@ const UserDashboard = (props) => {
                 <td><div style={{textAlign:'left', margin:'1%'}}>
                   {ticket.important? <span>important</span>:<></>}
                   </div>
-                  {ticket.description}</td>
+                  {ticket.description.substring(0, 100)}</td>
                 <td>{ticket.status}</td>
                 <td>
                   <button onClick={() => handleViewTicket(ticket._id)}>

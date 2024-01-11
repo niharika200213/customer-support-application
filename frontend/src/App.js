@@ -26,7 +26,7 @@ function App() {
         <Route path="/user/create" element={<CreateTicketForm userId={unique_id}/>} />
         <Route path="/user/dashboard/*" element={<UserDashboard userId={unique_id}/>} />
         <Route path="/user/ticket/:id" element={<UserTicketView userId={unique_id}/>} />
-        <Route path="/user/chat/:id" element={<UserChat userId={unique_id}/>} />
+        <Route path="/user/chat/:id" element={<UserChat />} />
     </Routes>
   );
 }

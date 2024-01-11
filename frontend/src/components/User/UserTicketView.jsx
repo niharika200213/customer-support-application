@@ -121,6 +121,8 @@ const UserTicketView = (props) => {
               </button>
             )}
             <button onClick={()=>navigate('/user/dashboard/*')}>Dashboard</button>
+            <br></br>
+            <button onClick={()=>navigate(`/user/chat/${id}`)}>Chat Online</button>
           </div>
 
         </>
