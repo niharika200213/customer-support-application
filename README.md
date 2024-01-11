@@ -1,3 +1,9 @@
+Project video
+https://www.loom.com/share/69235009c2f04681bb7ffe57202e9387?sid=61cd41f6-f7ae-4379-803e-ab90b0404c6a
+
+Code walkthrough
+
+
 To run the project 
 1. clone this repository
 2. create .env in backend
