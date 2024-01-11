@@ -1,8 +1,8 @@
 Project video
 https://www.loom.com/share/69235009c2f04681bb7ffe57202e9387?sid=61cd41f6-f7ae-4379-803e-ab90b0404c6a
 
-Code walkthrough
-
+Code walkthrough video
+https://www.loom.com/share/a3a108135e0d444f8f8c4031ca04a33b?sid=e3b15f3e-1b93-4fa9-8940-96ee18a17994
 
 To run the project 
 1. clone this repository
