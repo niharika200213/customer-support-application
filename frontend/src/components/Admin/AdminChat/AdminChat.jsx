@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import './AdminChat.css';
 const socket = io('http://localhost:5000'); // Replace with your server URL
 
@@ -8,6 +10,7 @@ const AdminChat = (props) => {
     const [messages, setMessages] = useState([]);
     const [inputMessage, setInputMessage] = useState('');
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Join the chat room as a staff
@@ -80,6 +83,7 @@ const AdminChat = (props) => {
                     onChange={(e) => setInputMessage(e.target.value)}
                 />
                 <button type="submit">Send</button>
+                <button onClick={()=>navigate('/admin/dashboard')}>Exit</button>
             </form>
         </div>
     );
